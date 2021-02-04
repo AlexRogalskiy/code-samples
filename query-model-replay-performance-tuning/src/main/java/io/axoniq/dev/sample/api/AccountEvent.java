@@ -10,4 +10,6 @@ import java.util.UUID;
 public interface AccountEvent {
 
     UUID getAccountId();
+
+    String accountIdString();
 }

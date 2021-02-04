@@ -24,6 +24,11 @@ public class AccountCreatedEvent implements AccountEvent {
     }
 
     @Override
+    public String accountIdString() {
+        return accountId.toString();
+    }
+
+    @Override
     public boolean equals(Object o) {
         if (this == o) {
             return true;

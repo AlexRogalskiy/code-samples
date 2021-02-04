@@ -26,6 +26,11 @@ public class AccountDebitedEvent implements AccountEvent {
         return accountId;
     }
 
+    @Override
+    public String accountIdString() {
+        return accountId.toString();
+    }
+
     public BigDecimal getAmount() {
         return amount;
     }
