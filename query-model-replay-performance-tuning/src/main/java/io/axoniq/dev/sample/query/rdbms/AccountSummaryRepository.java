@@ -5,7 +5,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.UUID;
 
 /**
- * Repository solution for an {@link AccountSummary}.
+ * Spring Data JPA repository solution for an {@link AccountSummary}.
  *
  * @author Steven van Beelen
  */
