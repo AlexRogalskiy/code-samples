@@ -1,4 +1,4 @@
-package io.axoniq.dev.sample.query;
+package io.axoniq.dev.sample.query.rdbms;
 
 import java.math.BigDecimal;
 import java.util.Objects;
