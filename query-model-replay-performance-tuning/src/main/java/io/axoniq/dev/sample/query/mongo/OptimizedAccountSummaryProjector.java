@@ -1,4 +1,4 @@
-package io.axoniq.dev.sample.query.rdbms;
+package io.axoniq.dev.sample.query.mongo;
 
 import io.axoniq.dev.sample.api.AccountCancelledEvent;
 import io.axoniq.dev.sample.api.AccountCreatedEvent;
@@ -17,24 +17,24 @@ import java.util.UUID;
 import java.util.function.Consumer;
 
 /**
- * Projector for the {@link AccountSummary}. Projects to a {@link org.springframework.data.jpa.repository.JpaRepository}.
+ * Projector for the {@link AccountSummary}. Projects to a {@link org.springframework.data.mongodb.repository.MongoRepository}.
  * <p>
  * Uses the {@link UnitOfWork} to stage the storage of the model once the {@code UnitOfWork} is committed. This approach
  * is only feasible if the batch size is greater than 1, as this enhance the number of events dealt with in a {@code
  * UnitOfWork}.
  * <p>
- * It does so by storing the {@code AccountSummary} on the {@link org.axonframework.messaging.unitofwork.UnitOfWork.Phase#PREPARE_COMMIT}
- * phase, by attaching an operation {@link UnitOfWork#onPrepareCommit(Consumer)}. This requires to store the model
- * within the {@link UnitOfWork#resources()}.
+ * It does so by storing the {@code AccountSummary} on the {@link UnitOfWork.Phase#PREPARE_COMMIT} phase, by attaching
+ * an operation {@link UnitOfWork#onPrepareCommit(Consumer)}. This requires to store the model within the {@link
+ * UnitOfWork#resources()}.
  * <p>
  * Certain caution should be taken with this approach, as from the handling perspective we cannot be certain whether a
  * the model is present in the resources for the given event batch.
  *
  * @author Steven van Beelen
  */
-@SuppressWarnings("DuplicatedCode") // Suppressing duplicated Mongo implementation. Duplicated for sample simplicity.
+@SuppressWarnings("DuplicatedCode") // Suppressing duplicated JPA implementation. Duplicated for sample simplicity.
 @Component
-@Profile("uow")
+@Profile({"mongo", "uow"})
 @ProcessingGroup("account-summary")
 class OptimizedAccountSummaryProjector {
 

@@ -1,4 +1,4 @@
-package io.axoniq.dev.sample.query.rdbms;
+package io.axoniq.dev.sample.query.mongo;
 
 import io.axoniq.dev.sample.api.AccountCancelledEvent;
 import io.axoniq.dev.sample.api.AccountCreatedEvent;
@@ -12,7 +12,7 @@ import org.springframework.stereotype.Component;
 import java.util.UUID;
 
 /**
- * Default projector for the {@link AccountSummary}. Projects to a {@link org.springframework.data.jpa.repository.JpaRepository}.
+ * Default projector for the {@link AccountSummary}. Projects to a {@link org.springframework.data.mongodb.repository.MongoRepository}.
  * <p>
  * Does <em>not</em> employ the {@link org.axonframework.messaging.unitofwork.UnitOfWork} to enhance event handling
  * during replays. Instead it follows a regular approach of saving and updating the entity in the event handler
@@ -21,7 +21,7 @@ import java.util.UUID;
  * @author Steven van Beelen
  */
 @Component
-@Profile("!uow")
+@Profile({"mongo", "!uow"})
 @ProcessingGroup("account-summary")
 class AccountSummaryProjector {
 
