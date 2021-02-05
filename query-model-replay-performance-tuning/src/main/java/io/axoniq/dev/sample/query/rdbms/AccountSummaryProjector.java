@@ -1,4 +1,4 @@
-package io.axoniq.dev.sample.query;
+package io.axoniq.dev.sample.query.rdbms;
 
 import io.axoniq.dev.sample.api.AccountCancelledEvent;
 import io.axoniq.dev.sample.api.AccountCreatedEvent;
