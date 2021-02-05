@@ -1,0 +1,11 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="Query Model Replay Performance - Mongo" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" folderName="Query Model Replay Performance - Mongo">
+    <module name="query-model-replay-performance-tuning" />
+    <option name="SPRING_BOOT_MAIN_CLASS" value="io.axoniq.dev.sample.QueryModelReplayPerformanceApplication" />
+    <option name="ACTIVE_PROFILES" value="mongo" />
+    <option name="ALTERNATIVE_JRE_PATH" />
+    <method v="2">
+      <option name="Make" enabled="true" />
+    </method>
+  </configuration>
+</component>
