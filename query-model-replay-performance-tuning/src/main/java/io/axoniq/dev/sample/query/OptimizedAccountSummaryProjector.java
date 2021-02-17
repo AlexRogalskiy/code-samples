@@ -1,4 +1,4 @@
-package io.axoniq.dev.sample.query.rdbms;
+package io.axoniq.dev.sample.query;
 
 import io.axoniq.dev.sample.api.AccountCancelledEvent;
 import io.axoniq.dev.sample.api.AccountCreatedEvent;
@@ -32,7 +32,6 @@ import java.util.function.Consumer;
  *
  * @author Steven van Beelen
  */
-@SuppressWarnings("DuplicatedCode") // Suppressing duplicated Mongo implementation. Duplicated for sample simplicity.
 @Component
 @Profile("uow")
 @ProcessingGroup("account-summary")
