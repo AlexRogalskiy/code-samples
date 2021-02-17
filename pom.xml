@@ -12,7 +12,7 @@
         <module>set-based-validation</module>
         <module>distributed-exceptions</module>
         <module>axon-spring-template</module>
-        <module>query-model-replay-performance-tuning</module>
+        <module>replay-performance-tuning</module>
     </modules>
     <packaging>pom</packaging>
 

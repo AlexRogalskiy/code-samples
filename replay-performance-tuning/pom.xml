@@ -9,9 +9,9 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>query-model-replay-performance-tuning</artifactId>
-    <name>Query Model Replay Performance Tuning</name>
-    <description>Sample project showcasing performance tuning option to replay a query model.</description>
+    <artifactId>replay-performance-tuning</artifactId>
+    <name>Replay Performance Tuning</name>
+    <description>Sample project showcasing performance tuning options when replay a query model.</description>
 
     <properties>
         <!-- Build -->
