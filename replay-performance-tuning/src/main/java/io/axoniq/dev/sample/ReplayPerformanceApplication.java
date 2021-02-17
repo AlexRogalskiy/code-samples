@@ -23,10 +23,10 @@ import java.util.concurrent.TimeUnit;
  * @author Steven van Beelen
  */
 @SpringBootApplication
-public class QueryModelReplayPerformanceApplication {
+public class ReplayPerformanceApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(QueryModelReplayPerformanceApplication.class, args);
+        SpringApplication.run(ReplayPerformanceApplication.class, args);
     }
 
     @Autowired
