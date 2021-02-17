@@ -1,5 +1,6 @@
 <component name="ProjectRunConfigurationManager">
   <configuration default="false" name="Replay Performance Tuning - Batching" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" folderName="Replay Performance Tuning">
+    <module name="replay-performance-tuning" />
     <option name="SPRING_BOOT_MAIN_CLASS" value="io.axoniq.dev.sample.ReplayPerformanceApplication" />
     <option name="ACTIVE_PROFILES" value="postgres, batching" />
     <option name="ALTERNATIVE_JRE_PATH" />
