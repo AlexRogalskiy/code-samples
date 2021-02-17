@@ -21,7 +21,7 @@
         <postgresql.version>42.2.18</postgresql.version>
         <javax.persistence-api.version>2.2</javax.persistence-api.version>
         <!-- Metrics -->
-        <micrometer-core.version>1.6.2</micrometer-core.version>
+        <dropwizard-metric.version>2.0.19</dropwizard-metric.version>
     </properties>
 
     <dependencies>
@@ -66,9 +66,14 @@
 
         <!-- Metrics -->
         <dependency>
-            <groupId>io.micrometer</groupId>
-            <artifactId>micrometer-core</artifactId>
-            <version>${micrometer-core.version}</version>
+            <groupId>org.axonframework</groupId>
+            <artifactId>axon-metrics</artifactId>
+            <version>${axon.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.dropwizard</groupId>
+            <artifactId>dropwizard-metrics</artifactId>
+            <version>${dropwizard-metrics.version}</version>
         </dependency>
     </dependencies>
 </project>
