@@ -39,6 +39,8 @@ import java.util.stream.IntStream;
 @Profile("loader")
 public class EventLoadGenerator implements CommandLineRunner {
 
+    private static final Logger logger = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
+
     private final EventGateway eventGateway;
     private final ExecutorService executorService;
     private final int eventsPerThread;
@@ -62,32 +64,40 @@ public class EventLoadGenerator implements CommandLineRunner {
                  .mapToObj(EventPublisher::new)
                  .map(eventPublisher -> CompletableFuture.runAsync(eventPublisher, executorService))
                  .reduce(CompletableFuture::allOf)
-                 .ifPresent(CompletableFuture::join);
+                 .ifPresent(result -> result.whenComplete((r, e) -> logger.info("All EventLoadGenerators are done."))
+                                            .join());
+        System.exit(1);
     }
 
     private class EventPublisher implements Runnable {
 
+        private final int threadNumber;
+
         public EventPublisher(int threadNumber) {
-            Logger logger = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
-            logger.info("Starting Event Publisher thread #{}", threadNumber);
+            this.threadNumber = threadNumber;
+            logger.info("Starting EventLoadGenerator-#{}.", this.threadNumber);
         }
 
         @Override
         public void run() {
-            List<UUID> accountIds = new ArrayList<>(idsPerThread);
+            UUID[] accountIds = new UUID[idsPerThread];
             Random rng = new SecureRandom();
             for (int i = 0; i < eventsPerThread; i++) {
+                if (i % 1000 == 0) {
+                    logger.info("EventLoadGenerator-#{} published {} events...", threadNumber, i);
+                }
                 AccountEvent randomEvent = generateAccountEvent(accountIds, rng);
                 eventGateway.publish(randomEvent);
             }
+            logger.info("EventLoadGenerator-#{} is done.", threadNumber);
         }
 
-        private AccountEvent generateAccountEvent(List<UUID> accountIds, Random rng) {
-            int index = rng.nextInt(accountIds.size());
-            UUID accountId = accountIds.get(index);
+        private AccountEvent generateAccountEvent(UUID[] accountIds, Random rng) {
+            int index = rng.nextInt(accountIds.length);
+            UUID accountId = accountIds[index];
             if (Objects.isNull(accountId)) {
                 UUID newAccountI = UUID.randomUUID();
-                accountIds.set(index, newAccountI);
+                accountIds[index] = newAccountI;
                 return new AccountCreatedEvent(newAccountI);
             } else {
                 float dice = rng.nextFloat();
@@ -96,7 +106,7 @@ public class EventLoadGenerator implements CommandLineRunner {
                 } else if (dice < 0.8f) {
                     return new AccountDebitedEvent(accountId, generateAmount(rng.nextDouble()));
                 } else {
-                    accountIds.set(index, null);
+                    accountIds[index] = null;
                     return new AccountCancelledEvent(accountId);
                 }
             }
