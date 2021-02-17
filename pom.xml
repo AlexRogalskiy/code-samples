@@ -26,6 +26,7 @@
         <swagger.version>2.9.2</swagger.version>
         <jackson.core.version>2.12.1</jackson.core.version>
         <mockito-version>1.10.19</mockito-version>
+        <jackson-bom.version>2.12.1</jackson-bom.version>
     </properties>
 
     <name>Axon Code Samples</name>
@@ -70,6 +71,13 @@
                 <groupId>org.jetbrains</groupId>
                 <artifactId>annotations</artifactId>
                 <version>20.1.0</version>
+            </dependency>
+            <dependency>
+                <groupId>com.fasterxml.jackson</groupId>
+                <artifactId>jackson-bom</artifactId>
+                <version>${jackson-bom.version}</version>
+                <scope>import</scope>
+                <type>pom</type>
             </dependency>
         </dependencies>
     </dependencyManagement>
