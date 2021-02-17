@@ -1,4 +1,4 @@
-package io.axoniq.dev.sample.query.rdbms;
+package io.axoniq.dev.sample.query;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
