@@ -33,7 +33,7 @@ import java.util.function.Consumer;
  * @author Steven van Beelen
  */
 @Component
-@Profile("uow")
+@Profile("!loader & uow")
 @ProcessingGroup("account-summary")
 class OptimizedAccountSummaryProjector {
 

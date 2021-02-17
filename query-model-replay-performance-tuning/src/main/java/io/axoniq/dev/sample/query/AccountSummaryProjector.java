@@ -21,7 +21,7 @@ import java.util.UUID;
  * @author Steven van Beelen
  */
 @Component
-@Profile("!uow")
+@Profile("!loader & !uow")
 @ProcessingGroup("account-summary")
 class AccountSummaryProjector {
 
