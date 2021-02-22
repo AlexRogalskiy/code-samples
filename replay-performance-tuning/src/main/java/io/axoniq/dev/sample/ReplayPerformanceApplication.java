@@ -5,7 +5,9 @@ import com.codahale.metrics.Slf4jReporter;
 import org.axonframework.commandhandling.CommandBus;
 import org.axonframework.config.Configurer;
 import org.axonframework.eventhandling.EventBus;
+import org.axonframework.eventhandling.EventMessage;
 import org.axonframework.eventhandling.EventProcessor;
+import org.axonframework.eventhandling.async.SequencingPolicy;
 import org.axonframework.metrics.MessageTimerMonitor;
 import org.axonframework.monitoring.NoOpMessageMonitor;
 import org.axonframework.queryhandling.QueryBus;
@@ -14,6 +16,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Profile;
 
 import java.util.concurrent.TimeUnit;
 
@@ -27,6 +31,12 @@ public class ReplayPerformanceApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(ReplayPerformanceApplication.class, args);
+    }
+
+    @Bean
+    @Profile("multithreading")
+    public SequencingPolicy<EventMessage<?>> sequentialPerAccountPolicy() {
+        return new SequentialPerAccountPolicy();
     }
 
     @Autowired
