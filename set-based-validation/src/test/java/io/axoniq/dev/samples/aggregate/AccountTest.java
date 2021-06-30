@@ -45,12 +45,11 @@ public class AccountTest {
     }
 
     @Test
-    void shouldUpdateEmailAddress() {
-        when(emailRepository.findById(EMAIL_ADDRESS_CHANGED)).thenReturn(Optional.empty());
+    void shouldIntercept() {
 
         fixture.given(new AccountCreatedEvent(UUID, EMAIL_ADDRESS))
                .when(new ChangeEmailAddressCommand(UUID, EMAIL_ADDRESS_CHANGED))
-               .expectEvents(new EmailAddressChangedEvent(UUID, EMAIL_ADDRESS_CHANGED));
+               .expectException(IllegalStateException.class);
     }
 
     @Test
