@@ -13,20 +13,24 @@
         <module>distributed-exceptions</module>
         <module>axon-spring-template</module>
         <module>upcaster</module>
+        <module>saga</module>
+        <module>subscription-query-ui-streaming</module>
+        <module>reset-handler</module>
         <module>replay-performance-tuning</module>
     </modules>
     <packaging>pom</packaging>
 
     <properties>
         <encoding>UTF-8</encoding>
-        <spring.boot.version>2.5.0</spring.boot.version>
-        <axon.version>4.5.1</axon.version>
-        <reactor.core.version>3.4.6</reactor.core.version>
-        <junit.version>5.7.1</junit.version>
-        <testcontainers.version>1.15.3</testcontainers.version>
+        <spring.boot.version>2.5.5</spring.boot.version>
+        <axon.version>4.5.4</axon.version>
+        <reactor.core.version>3.4.10</reactor.core.version>
+        <junit.version>5.8.1</junit.version>
+        <testcontainers.version>1.16.1</testcontainers.version>
         <swagger.version>3.0.0</swagger.version>
-        <jackson.core.version>2.12.3</jackson.core.version>
+        <jackson.core.version>2.13.0</jackson.core.version>
         <mockito-version>1.10.19</mockito-version>
+        <kotlin-maven-version>1.5.31</kotlin-maven-version>
         <jackson-bom.version>2.12.1</jackson-bom.version>
     </properties>
 
@@ -71,7 +75,7 @@
             <dependency>
                 <groupId>org.jetbrains</groupId>
                 <artifactId>annotations</artifactId>
-                <version>21.0.0</version>
+                <version>22.0.0</version>
             </dependency>
             <dependency>
                 <groupId>org.skyscreamer</groupId>
@@ -82,7 +86,7 @@
             <dependency>
                 <groupId>org.json</groupId>
                 <artifactId>json</artifactId>
-                <version>20201115</version>
+                <version>20210307</version>
             </dependency>
             <dependency>
                 <groupId>com.fasterxml.jackson</groupId>
